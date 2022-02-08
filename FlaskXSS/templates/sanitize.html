@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Insufficient Sanitization Demo{% endblock %}
+
+{% block display %}Insufficient Sanitization Demo{% endblock %}
+
+{% block description %}
+    <p>Try this URL first: <code>http://localhost:5001/insufsanitize?q=&lt;script&gt;alert(XSS)&lt;/script&gt;&lt;/code&gt;</code></p></p>
+    <p>Now, try this URL: <code>localhost:5001/insufsanitize?q=&lt;body onload=window.prompt(&quot;XSS&quot;);&gt;</code></p>
+{% endblock %}
+
+{% block content %}
+{% autoescape false %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 pt-3">
+        <div class="card mt-1 p-2 bg-white mb-2">
+            <p>{{ response }}</p>
+        </div>
+    </div>
+</div>
+
+{% endautoescape %}
+{% endblock %}

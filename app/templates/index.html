@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IAST-Prototype</title>
+        <link href="static/styles.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #01a16b;">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img src="static/logo.png" width="30" height="30">
+                 IAST-prototype
+            </a>
+            <!-- source logo: https://www.flaticon.com/de/kostenloses-icon/eye-tracking_4360314?related_id=4360314 -->
+        </nav>
+        <main role="main">
+            <div class="jumbotron">
+                <div class="container">
+                    <h2 class="display-4">IAST-Prototype Dashboard</h2>
+                    <p>A Python application security testing approach,
+                    implemented through the combination of
+                    automated penetration testing (DAST) and taint analysis (SAST).</p>
+                </div>
+            </div>
+            <div class="container">
+                {% if form.target.errors  %}
+                    <div class="alert alert-warning" role="alert">
+                        The format of the specified target URL is not correct!
+                    </div>
+                {% endif %}
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
+                {% if success_msg %}
+                    <div class="alert alert-success" role="alert">
+                        {{ success_msg }}
+                    </div>
+                {% endif %}
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="form-group">
+                            <form action="" method="POST">
+                                {{ form.csrf_token }}
+                                {{ form.target(class_="form-control", type_="url", placeholder= "http://target.url") }}
+                                <div class="btn-group pt-2 float-right">
+                                    {{ form.submit(class_="btn btn-outline-primary") }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                    {% if crawl_results %}
+                        <h4 class="display-10">Identified Resources</h4>
+                    {% endif %}
+                        <div class="table-wrapper-scroll custom-scrollbar">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="hideextra">
+                                        {% if crawl_results %}
+                                            <th scope="col">#</th>
+                                            <th scope="col">url</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for elem in crawl_results %}
+                                        <tr class="hideextra">
+                                            <th scope="row">{{ crawl_results.index(elem) }}</th>
+                                            <td>{{ elem }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        {% if dast_results %}
+                            <h4 class="display-10">DAST XSS Alerts</h4>
+                        {% endif %}
+                        <div class="table-wrapper-scroll custom-scrollbar">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="hideextra">
+                                        {% if dast_results %}
+                                            <th scope="col">#</th>
+                                            {% for key, value in dast_results[0].items() %}
+                                                <th scope="col">{{ key }}</th>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for dict in dast_results %}
+                                    <tr class="hideextra">
+                                        <th scope="row">{{ dast_results.index(dict) }}</th>
+                                        {% for key, value in dict.items() %}
+                                            {% if key == "attack" %}
+                                                <td class="hideextra"><code>{{ value }}</code></td>
+                                            {% else %}
+                                            <td class="hideextra">{{ value }}</td>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="padding-bottom:100px;">
+                    <div class="col-lg-12" style="padding-top: 30px;">
+                        {% if sast_results %}
+                            <h4 class="display-10">Dynamically Generated Pysa Rules</h4>
+                        {% endif %}
+                        <div class="table-wrapper-scroll custom-scrollbar">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr class="hideextra">
+                                    {% if sast_results %}
+                                        <th scope="col">#</th>
+                                        <th scope="col">rule</th>
+                                    {% endif %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for elem in sast_results %}
+                                    <tr class="hideextra">
+                                        <th scope="row">{{ sast_results.index(elem) }}</th>
+                                        <td>{{ elem }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

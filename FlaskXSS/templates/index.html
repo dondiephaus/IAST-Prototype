@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block display %}FlaskXSS - Cross-Site-Scripting Demo{% endblock %}
+
+{% block description %}
+    <p>
+        A small mock-up application containing various XSS vulnerabilities, built with Python Flask.
+        Jinja2 auto-escaping is disabled for all templates through the use of <code>{autoescape false}</code> tags.
+    </p>
+{% endblock %}
+
+{% block content %}
+{% autoescape false %}
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Persistent XSS</h3>
+        <small>
+            A comment section that adds messages to the underlying SQLite database and enlists all previously submitted
+            comments in its view. Serves as a demonstration of both persistent and reflected XSS as malicious user input
+            is neither validated when injected into the database, nor escaped when reflected on the website.
+        </small>
+    </div>
+    <div class="col-md-4">
+        <h3>Reflected XSS</h3>
+        <small>
+            Contains a search field used to retrieve comments that were submitted via the Persistent XSS page. Additionally, the sent query
+            string is displayed. Serves as a demonstration of reflected as well as persistent XSS since this page dynamically includes both malicious payload
+            retrieved from the database and submitted through the search field.
+        </small>
+    </div>
+    <div class="col-md-4">
+        <h3>XSS Header</h3>
+        <small>
+            Returns the content of the Referer HTTP header of incoming GET requests. Serves
+            as a demonstration of an alternative XSS technique. This vulnerability can be exploited
+            by placing a malicious script into the Referer, which is returned without escaping.
+        </small>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px" >
+    <div class="col-md-4">
+        <a class="btn btn-outline-secondary btn-block" href="{{ url_for('persistent') }}" role="button">View Demo</a>
+    </div>
+    <div class="col-md-4">
+         <a class="btn btn-outline-secondary btn-block" href="{{ url_for('reflected') }}" role="button">View Demo</a>
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-outline-secondary btn-block" href="{{ url_for('xssheader') }}" role="button">View Demo</a>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Insufficient Sanitization</h3>
+        <small>
+            A website that expects a URL parameter <code>q</code>. Returns it within a
+            text box. Serves as a demonstration of insufficient sanitization of user input
+            since it is only checked for  <code>&lt;script&gt;</code>- and <code>alert</code>-tags.
+        </small>
+    </div>
+    <div class="col-md-4">
+        <h3>Sufficient Sanitization</h3>
+        <small>
+            A website that expects a URL parameter <code>q</code>. Returns it within a
+            text box. Serves as a demonstration of sufficient sanitization of user input by
+            using the <code>html.escape</code> method to make it benign.
+        </small>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px" >
+    <div class="col-md-4">
+        <a class="btn btn-outline-secondary btn-block" href="{{ url_for('insufsanitize', q='test') }}" role="button">View Demo</a>
+    </div>
+    <div class="col-md-4">
+         <a class="btn btn-outline-secondary btn-block" href="{{ url_for('sufsanitize', q='test') }}" role="button">View Demo</a>
+    </div>
+</div>
+
+{% endautoescape %}
+{% endblock %}
+

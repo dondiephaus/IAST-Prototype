@@ -1,0 +1,6 @@
+Flask_WTF==0.15.1
+requests==2.26.0
+WTForms==2.3.3
+Flask==2.0.1
+jaeger_client==4.6.0
+python_owasp_zap_v2.4==0.0.18

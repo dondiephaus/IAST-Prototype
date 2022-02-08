@@ -1,0 +1,124 @@
+[
+    {
+        "key": "sampler.type",
+        "type": "string",
+        "value": "const"
+    },
+    {
+        "key": "sampler.param",
+        "type": "bool",
+        "value": true
+    },
+    {
+        "key": "url",
+        "type": "string",
+        "value": "http://localhost:5001/persistent"
+    },
+    {
+        "key": "method",
+        "type": "string",
+        "value": "POST"
+    },
+    {
+        "key": "OUT::werkzeug.wrappers.BaseRequest.form",
+        "type": "string",
+        "value": "</p><script>alert(1);</script><p>"
+    },
+    {
+        "key": "IN::def db.add_comment(comment)",
+        "type": "string",
+        "value": "comment::</p><script>alert(1);</script><p>"
+    },
+    {
+        "key": "OUT::def db.get_comments(search_query)",
+        "type": "string",
+        "value": "['</p><script>alert(1);</script><p>', '', '0W45pz4p', '', 'zApPX0sS', '</p><script>alert(1);</script><p>', '0W45pz4p', '\"><!--#EXEC cmd=\"dir \\\\\"--><', '<!--#EXEC cmd=\"dir \\\\\"-->', '\"><!--#EXEC cmd=\"ls /\"--><', '<!--#EXEC cmd=\"ls /\"-->', 'HtTpS://4435567589308215359.owasp.org', 'HtTp://4435567589308215359.owasp.org', '\\\\\\\\4435567589308215359.owasp.org', '//4435567589308215359.owasp.org', 'https:\\\\\\\\4435567589308215359.owasp.org', 'http:\\\\\\\\4435567589308215359.owasp.org', 'https://4435567589308215359.owasp.org', 'http://4435567589308215359.owasp.org', '4435567589308215359.owasp.org', 'www.google.com:80/search?q=OWASP%20ZAP', 'www.google.com/search?q=OWASP%20ZAP', 'www.google.com', 'www.google.com:80/', 'www.google.com/', 'http://www.google.com:80/search?q=OWASP%20ZAP', 'http://www.google.com/search?q=OWASP%20ZAP', 'http://www.google.com', 'http://www.google.com:80/', 'http://www.google.com/', 'thishouldnotexistandhopefullyitwillnot', '\\\\WEB-INF\\\\web.xml', '/WEB-INF/web.xml', 'WEB-INF\\\\web.xml', 'WEB-INF/web.xml"
+    },
+    {
+        "key": "IN::def flask.templating.render_template(template_name_or_list, **context)",
+        "type": "string",
+        "value": "**context::['</p><script>alert(1);</script><p>', '', '0W45pz4p', '', 'zApPX0sS', '</p><script>alert(1);</script><p>', '0W45pz4p', '\"><!--#EXEC cmd=\"dir \\\\\"--><', '<!--#EXEC cmd=\"dir \\\\\"-->', '\"><!--#EXEC cmd=\"ls /\"--><', '<!--#EXEC cmd=\"ls /\"-->', 'HtTpS://4435567589308215359.owasp.org', 'HtTp://4435567589308215359.owasp.org', '\\\\\\\\4435567589308215359.owasp.org', '//4435567589308215359.owasp.org', 'https:\\\\\\\\4435567589308215359.owasp.org', 'http:\\\\\\\\4435567589308215359.owasp.org', 'https://4435567589308215359.owasp.org', 'http://4435567589308215359.owasp.org', '4435567589308215359.owasp.org', 'www.google.com:80/search?q=OWASP%20ZAP', 'www.google.com/search?q=OWASP%20ZAP', 'www.google.com', 'www.google.com:80/', 'www.google.com/', 'http://www.google.com:80/search?q=OWASP%20ZAP', 'http://www.google.com/search?q=OWASP%20ZAP', 'http://www.google.com', 'http://www.google.com:80/', 'http://www.google.com/', 'thishouldnotexistandhopefullyitwillnot', '\\\\WEB-INF\\\\web.xml', '/WEB-INF/web.xml', 'WEB-INF\\\\web.xml', 'WEB-"
+    }
+],[
+    {
+        "key": "sampler.type",
+        "type": "string",
+        "value": "const"
+    },
+    {
+        "key": "sampler.param",
+        "type": "bool",
+        "value": true
+    },
+    {
+        "key": "url",
+        "type": "string",
+        "value": "http://localhost:5001/reflected?query=%3Cimg+src%3Dx+onerror%3Dalert%281%29%3B%3E"
+    },
+    {
+        "key": "method",
+        "type": "string",
+        "value": "GET"
+    },
+    {
+        "key": "OUT::werkzeug.wrappers.BaseRequest.args",
+        "type": "string",
+        "value": "<img src=x onerror=alert(1);>"
+    },
+    {
+        "key": "OUT::def db.get_comments(search_query)",
+        "type": "string",
+        "value": "[]"
+    },
+    {
+        "key": "IN::def flask.templating.render_template(template_name_or_list, **context)",
+        "type": "string",
+        "value": "**context::[]"
+    },
+    {
+        "key": "IN::def flask.templating.render_template(template_name_or_list, **context)",
+        "type": "string",
+        "value": "**context::<img src=x onerror=alert(1);>"
+    }
+],[
+    {
+        "key": "sampler.type",
+        "type": "string",
+        "value": "const"
+    },
+    {
+        "key": "sampler.param",
+        "type": "bool",
+        "value": true
+    },
+    {
+        "key": "url",
+        "type": "string",
+        "value": "http://localhost:5001/persistent"
+    },
+    {
+        "key": "method",
+        "type": "string",
+        "value": "POST"
+    },
+    {
+        "key": "OUT::werkzeug.wrappers.BaseRequest.form",
+        "type": "string",
+        "value": "</p><script>alert(1);</script><p>"
+    },
+    {
+        "key": "IN::def db.add_comment(comment)",
+        "type": "string",
+        "value": "comment::</p><script>alert(1);</script><p>"
+    },
+    {
+        "key": "OUT::def db.get_comments(search_query)",
+        "type": "string",
+        "value": "['</p><script>alert(1);</script><p>', '', '0W45pz4p', '', 'zApPX0sS', '</p><script>alert(1);</script><p>', '0W45pz4p', '\"><!--#EXEC cmd=\"dir \\\\\"--><', '<!--#EXEC cmd=\"dir \\\\\"-->', '\"><!--#EXEC cmd=\"ls /\"--><', '<!--#EXEC cmd=\"ls /\"-->', 'HtTpS://4435567589308215359.owasp.org', 'HtTp://4435567589308215359.owasp.org', '\\\\\\\\4435567589308215359.owasp.org', '//4435567589308215359.owasp.org', 'https:\\\\\\\\4435567589308215359.owasp.org', 'http:\\\\\\\\4435567589308215359.owasp.org', 'https://4435567589308215359.owasp.org', 'http://4435567589308215359.owasp.org', '4435567589308215359.owasp.org', 'www.google.com:80/search?q=OWASP%20ZAP', 'www.google.com/search?q=OWASP%20ZAP', 'www.google.com', 'www.google.com:80/', 'www.google.com/', 'http://www.google.com:80/search?q=OWASP%20ZAP', 'http://www.google.com/search?q=OWASP%20ZAP', 'http://www.google.com', 'http://www.google.com:80/', 'http://www.google.com/', 'thishouldnotexistandhopefullyitwillnot', '\\\\WEB-INF\\\\web.xml', '/WEB-INF/web.xml', 'WEB-INF\\\\web.xml', 'WEB-INF/web.xml"
+    },
+    {
+        "key": "IN::def flask.templating.render_template(template_name_or_list, **context)",
+        "type": "string",
+        "value": "**context::['</p><script>alert(1);</script><p>', '', '0W45pz4p', '', 'zApPX0sS', '</p><script>alert(1);</script><p>', '0W45pz4p', '\"><!--#EXEC cmd=\"dir \\\\\"--><', '<!--#EXEC cmd=\"dir \\\\\"-->', '\"><!--#EXEC cmd=\"ls /\"--><', '<!--#EXEC cmd=\"ls /\"-->', 'HtTpS://4435567589308215359.owasp.org', 'HtTp://4435567589308215359.owasp.org', '\\\\\\\\4435567589308215359.owasp.org', '//4435567589308215359.owasp.org', 'https:\\\\\\\\4435567589308215359.owasp.org', 'http:\\\\\\\\4435567589308215359.owasp.org', 'https://4435567589308215359.owasp.org', 'http://4435567589308215359.owasp.org', '4435567589308215359.owasp.org', 'www.google.com:80/search?q=OWASP%20ZAP', 'www.google.com/search?q=OWASP%20ZAP', 'www.google.com', 'www.google.com:80/', 'www.google.com/', 'http://www.google.com:80/search?q=OWASP%20ZAP', 'http://www.google.com/search?q=OWASP%20ZAP', 'http://www.google.com', 'http://www.google.com:80/', 'http://www.google.com/', 'thishouldnotexistandhopefullyitwillnot', '\\\\WEB-INF\\\\web.xml', '/WEB-INF/web.xml', 'WEB-INF\\\\web.xml', 'WEB-"
+    }
+],

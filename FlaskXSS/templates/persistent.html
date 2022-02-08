@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Persistent XSS Demo{% endblock %}
+
+{% block display %}Persistent XSS Demo{% endblock %}
+
+{% block description %}
+    <p>Submit a comment containing: <code>&lt;script&gt;alert(XSS)&lt;/script&gt;&lt;/code&gt;</code></p>
+{% endblock %}
+
+{% block content %}
+{% autoescape false %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="form-group">
+            <form action="/persistent" method="POST">
+                <textarea class="form-control" type="text" name="comment" placeholder="Comment" autocomplete="off" rows="3"></textarea>
+                <div class="btn-group pt-2 float-right">
+                    <button class="btn btn-outline-success" type="submit" value="Submit new comment" type="submit">Submit new comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8 pt-3">
+        <div class="mb-2">
+            <h3>Comments:</h3>
+        </div>
+        {% for comment in comments %}
+        <div class="card mt-1 p-2 bg-white mb-2 shadow-sm">
+            <p>{{ comment }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endautoescape %}
+{% endblock %}

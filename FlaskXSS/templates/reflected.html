@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Reflected XSS Demo{% endblock %}
+
+{% block display %}Reflected XSS Demo{% endblock %}
+
+{% block description %}
+    <p>Search for a previously submitted comment or simply search for: <code>&lt;script&gt;alert(XSS)&lt;/script&gt;&lt;/code&gt;</code></p>
+{% endblock %}
+
+{% block content %}
+{% autoescape false %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="form-group">
+            <form action="/reflected" method="GET">
+                <input class="form-control" type="text" name="query" placeholder="Query" autocomplete="off" rows="1"></input>
+                <div class="btn-group pt-2 float-right">
+                    <button class="btn btn-outline-primary" type="submit" value="Search comment" type="submit">Search comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if search_query %}
+    <div class="col-md-8 pt-3">
+        <div class="mb-2">
+            <h3>Comments containing "{{ search_query }}":</h3>
+        </div>
+        {% for comment in comments %}
+        <div class="card mt-1 p-2 bg-white mb-2 shadow-sm">
+            <p>{{ comment }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endautoescape %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+  "source_directories": [
+    "."
+  ],
+  "taint_models_path": [
+    "/mnt/c/Users/Don Diephaus/Desktop/Bachelorarbeit/iast-prototype/app/Pysa",
+    "/mnt/c/Users/Don Diephaus/Desktop/Bachelorarbeit/iast-prototype/assets_thesis/pysa_security_rules"
+  ],
+    "search_path": [
+    "."
+  ]
+}
