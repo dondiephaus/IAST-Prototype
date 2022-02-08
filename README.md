@@ -3,6 +3,8 @@
 A Python application security testing approach, 
 implemented through the combination of 
 automated penetration testing (DAST) and taint analysis (SAST).
+This project was developed as part of my [bachelor thesis](BAThesis_Finding%20vulnerabilities%20by%20combining%20taint%20analysis%20and%20dynamic%20application%20security%20testing%20-%20Implementation%20of%20an%20IAST%20prototype.pdf) for the IT Security 
+research group at the WWU Münster.
 
 ---
 
